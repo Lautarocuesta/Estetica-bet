@@ -31,7 +31,7 @@ const ModalStock = ({ tratamiento, onClose }) => {
                         <li key={index}>{item}</li>
                     ))}
                     {(!tratamiento.insumos || tratamiento.insumos.length === 0) && (
-                         <li className="text-gray-500 italic">No hay insumos específicos listados.</li>
+                        <li className="text-gray-500 italic">No hay insumos específicos listados.</li>
                     )}
                 </ul>
 
@@ -63,13 +63,23 @@ const TratamientoCard = ({ tratamiento, onVerStockClick }) => {
 
     return (
         <div className="card">
+
+            {/* ✅ MOSTRAR IMAGEN DEL TRATAMIENTO */}
+            {tratamiento.imagen && (
+                <img 
+                    src={tratamiento.imagen} 
+                    alt={tratamiento.nombre} 
+                    className="card-image"
+                />
+            )}
+
             <div>
                 <h4 className="card-title">{tratamiento.nombre}</h4>
                 <p className="card-price">{precioFormateado}</p> 
             </div>
             
             <div className="card-details">
-                <p><span>⏱️</span> Duración: **{tratamiento.duracionMinutos} min**</p>
+                <p><span>⏱️</span> Duración: <strong>{tratamiento.duracionMinutos} min</strong></p>
                 <p><span>💳</span> Pago: {tratamiento.formasDePago.join(', ')}</p>
             </div>
             
